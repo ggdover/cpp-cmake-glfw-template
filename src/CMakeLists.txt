@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.1)
 project(myproj)
 
+find_package(glfw3 3.3 REQUIRED)
+find_package(OpenGL REQUIRED)
+
 # One of two lines present depending on if output is a library (shared or static) or an executable
 #add_library(mytarget)
 add_executable(mytarget)
@@ -21,6 +24,7 @@ target_sources(mytarget
 )
 
 # Incase there are any shared or static libraries that we are linking to
-#target_link_libraries(mytarget
-#
-#)
+target_link_libraries(mytarget
+	glfw
+	OpenGL::GL
+)
